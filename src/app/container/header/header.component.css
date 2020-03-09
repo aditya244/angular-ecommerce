@@ -1,0 +1,16 @@
+
+.heading{
+  text-align: center;
+}
+
+.heading-container{
+  border-left: solid 3px slategray;
+  background-color: #D9D7DD;
+  height: 70px;
+  padding-top: 15px;
+}
+
+.div-extended{
+  margin: 0px;
+  padding: 0px;
+}

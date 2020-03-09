@@ -1,0 +1,14 @@
+<div class="col-md-12">
+    <div class="col-md-3 float-left">
+      <app-sidebar></app-sidebar>
+    </div>
+    <div class="col-md-9 float-left product-container">
+      <app-product *ngFor="let product of productData"
+        [productTitle]="product.name"
+        [productPrice]="product.price"
+        [productCategory]="product.category"
+        [productId]="product.id"
+        [productImgUrl]="product.imageUrl">
+      </app-product>
+    </div>
+</div>

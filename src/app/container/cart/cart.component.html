@@ -1,0 +1,20 @@
+
+    <div class="container">
+      <h1 class="h1 cart-heading">Your Cart</h1>
+      <div class="card card-box" style="width: 350px; float:left" *ngFor="let product of products">
+        <img class="card-img-top" [src]="this.product.imageUrl" alt="Card image cap" height="300">
+        <div class="card-body">
+          <h5 class="card-title">{{this.product.name}}</h5>
+          <span class="card-attr">Price: {{this.product.price}}</span>
+        </div>
+      </div>
+    </div>
+
+
+<div class="col-md-12 float-left">
+  <div class="jumbotron">
+    <h4 class="display-5">Cart Total Price</h4>
+    <hr class="my-4">
+    <p>Your Cart Total Price is {{this.totalCartAmount}} </p>
+    <a class="btn btn-primary btn-lg" href="#" role="button">Proceed To Pay</a>
+</div>

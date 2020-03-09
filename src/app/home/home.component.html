@@ -1,0 +1,35 @@
+<div class="col-md-12 div-extended">
+  <div class="col-md-10 float-left heading-container">
+    <h2 class="heading">E-Commerce</h2>
+  </div>
+  <div class="col-md-2 float-left heading-container header-button" (click)="cartService.goToCart()">
+    Go to Cart
+  </div>
+</div>
+<div class="col-md-12 float-left">
+  <div class="container">
+    <div class="card-group">
+      <button class="btn btn-secondary" (click)="cartService.sortProductsByPrice()">Sort</button>
+      <div class="row row-cols-4">
+        <div class="col col-container" *ngFor="let product of cartService.productData">
+          <div class="col-md-12 col-sm-12">
+            <img [src]="product.imageUrl" class="card-img-top" alt="Image">
+          </div>
+          <div class="col-md-12">
+            <div class="card product-container">
+              <div class="card-body card-body-custom">
+                <h5 class="card-title">{{product.name}}</h5>
+                <span class="card-attr">Price: {{product.price}}</span>
+                <p class="card-text">
+                  Category: {{product.category}}<br>
+                  <button class="btn btn-secondary counter-btn" (click)="cartService.addToCart(product.id)">+</button>
+                  <button class="btn btn-secondary counter-btn">-</button>
+                </p>
+              </div>
+            <div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
