@@ -16,7 +16,7 @@ export class ProductComponent implements OnInit {
   @Input() productId: number;
   @Input() productImgUrl: string;
 
-  // declare a variable for quanityt
+  // declare a variable for quantity
   // declare methods for increment and decrement
   // pass the quantity data to cart service
   // add a new property to the product object and increase the value upon click of add to cart, set the default value to be one
