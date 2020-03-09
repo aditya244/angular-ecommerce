@@ -23,7 +23,6 @@ export class ProductComponent implements OnInit {
   // multiply the price with the quanity of that product
 
 
-
   ngOnInit() {
   }
 
