@@ -7,7 +7,7 @@
       Category: {{productCategory}}
     </p>
     <p>
-      <button class="btn btn-light counter-btn">+</button>
+      <button class="btn btn-light counter-btn" (click)="this.prodsService.onIncrement(productId)">+</button>
       <button class="btn btn-light counter-btn">-</button>
     </p>
       <button class="btn btn-info" (click)="cartService.addToCart(productId)">Add to Cart</button>

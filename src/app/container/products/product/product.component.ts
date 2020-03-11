@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { CartService } from 'src/app/shared/services/cart.service';
+import { ProductsService } from 'src/app/shared/services/products.service';
 
 
 @Component({
@@ -9,7 +10,7 @@ import { CartService } from 'src/app/shared/services/cart.service';
 })
 export class ProductComponent implements OnInit {
 
-  constructor(public cartService: CartService) { }
+  constructor(public cartService: CartService, public prodsService: ProductsService) { }
   @Input() productTitle: string;
   @Input() productPrice: number;
   @Input() productCategory: string;

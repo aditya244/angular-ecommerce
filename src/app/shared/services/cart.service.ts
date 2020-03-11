@@ -3,13 +3,14 @@ import { JsoncallService } from './jsoncall.service';
 import { IProduct } from '../interfaces/product';
 import { BehaviorSubject, Subscription } from 'rxjs';
 import { Router } from '@angular/router';
+import { ProductsService } from './products.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CartService {
 
-  constructor(private jsonCallService: JsoncallService, private router: Router) { }
+  constructor(private jsonCallService: JsoncallService, private router: Router, private prodsService: ProductsService) { }
 
   singleProductData: IProduct;
   cart: IProduct[] = [];
@@ -36,10 +37,18 @@ export class CartService {
           this.cart.push(this.singleProductData);
           this.itemAddedToCart.next([...this.cart]);
           this.productPrice.push(this.singleProductData.price);
+
           console.log('Product price', this.productPrice);
           const reducer = (accumulator, currentValue) => accumulator + currentValue;
           this.totalPrice = this.productPrice.reduce(reducer);
           console.log(this.totalPrice);
+          // vAdd the logic here
+          if (this.prodsService.productArr.length > 0) {
+            if (this.cart.indexOf(this.prodsService.productArr[0])) {
+              this.singleProductData.price = this.singleProductData.price * this.prodsService.productArr.length;
+            }
+            console.log('The total price of item is', this.singleProductData.price);
+          }
       }
     );
   }
