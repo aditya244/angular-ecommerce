@@ -31,24 +31,43 @@ export class CartService {
   addToCart(id: number) {
       this.jsonCallService.getProductData()
         .subscribe( data => {
-          console.log(data, 'whole data');
+          // console.log(data, 'whole data');
           this.singleProductData = data[id];
-          console.log(this.cart, 'cart');
-          this.cart.push(this.singleProductData);
-          this.itemAddedToCart.next([...this.cart]);
-          this.productPrice.push(this.singleProductData.price);
+          // console.log(this.cart, 'cart');
+          // this.cart.push(this.singleProductData);
+          // this.itemAddedToCart.next([...this.cart]);
+          // this.productPrice.push(this.singleProductData.price);
 
-          console.log('Product price', this.productPrice);
-          const reducer = (accumulator, currentValue) => accumulator + currentValue;
-          this.totalPrice = this.productPrice.reduce(reducer);
-          console.log(this.totalPrice);
+          // console.log('Product price', this.productPrice);
+          // const reducer = (accumulator, currentValue) => accumulator + currentValue;
+          // this.totalPrice = this.productPrice.reduce(reducer);
+          // console.log(this.totalPrice);
           // vAdd the logic here
           if (this.prodsService.productArr.length > 0) {
             if (this.cart.indexOf(this.prodsService.productArr[0])) {
-              this.singleProductData.price = this.singleProductData.price * this.prodsService.productArr.length;
+              this.singleProductData.price = this.singleProductData.price * (this.prodsService.productArr.length + 1);
+              this.cart.push(this.singleProductData);
+              this.itemAddedToCart.next([...this.cart]);
+              this.productPrice.push(this.singleProductData.price);
+              const reducer = (accumulator, currentValue) => accumulator + currentValue;
+              this.totalPrice = this.productPrice.reduce(reducer);
+              this.prodsService.productArr = [];
             }
-            console.log('The total price of item is', this.singleProductData.price);
+            // console.log('The total price of item is', this.singleProductData.price);
+          } else {
+            this.singleProductData = data[id];
+            console.log('else statement working');
+            // console.log(this.cart, 'cart');
+            this.cart.push(this.singleProductData);
+            this.itemAddedToCart.next([...this.cart]);
+            this.productPrice.push(this.singleProductData.price);
+            console.log('Product price', this.productPrice);
+            const reducer = (accumulator, currentValue) => accumulator + currentValue;
+            this.totalPrice = this.productPrice.reduce(reducer);
+            // console.log(this.totalPrice);
+            this.prodsService.productArr = [];
           }
+          console.log('The total cart price is', this.totalPrice);
       }
     );
   }
